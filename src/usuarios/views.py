@@ -10,7 +10,7 @@ def sesion_ver(request):
 
 def sesion_iniciar(request):
     try:
-        usuario = authenticate(request.POST['usuario'], request.POST['contrasena'])
+        usuario = authenticate(username=request.POST['usuario'], password=request.POST['contrasena'])
         if usuario:
             login(request, usuario)
             return HttpResponse(status=201)
@@ -22,3 +22,14 @@ def sesion_iniciar(request):
 def sesion_cerrar(request):
     logout(request)
     return HttpResponse(status=200)
+
+def usuario_crear(request):
+    try:
+        nuevo = User()
+        nuevo.username = request.POST['usuario']
+        nuevo.email = request.POST['email']
+        nuevo.set_password(request.POST['contrasena'])
+        nuevo.save()
+        return HttpResponse(status=201)
+    except:
+        return HttpResponse(status=400)

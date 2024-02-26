@@ -11,6 +11,7 @@ urlpatterns = [
     path('sesion_ver', sesion_ver),
     path('sesion_iniciar', sesion_iniciar),
     path('sesion_cerrar', sesion_cerrar),
+    path('usuario_crear', usuario_crear),
     path('archivo_listar', archivo_listar),
     path('archivo_descargar/<int>', archivo_descargar),
     path('archivo_subir', archivo_subir),

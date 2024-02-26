@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'archivos',
     'comentarios',
+    'usuarios',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
