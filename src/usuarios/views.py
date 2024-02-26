@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponse
 def sesion_ver(request):
     obj = {}
     if request.user:
-         obj['id'] = request.user.pk
+         obj['usuario'] = request.user.username
     return JsonResponse(obj, status=200, safe=False)
 
 def sesion_iniciar(request):
