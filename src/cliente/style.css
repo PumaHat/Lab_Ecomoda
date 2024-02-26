@@ -1,0 +1,112 @@
+html {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/logo.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+header {
+    display: flex;
+    align-items: center;
+}
+h1 {
+    flex-grow: 1;
+}
+body {
+    font-family: "Noto Serif", serif;
+}
+body>article>*{
+    width: max-content;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+}
+h1, h2, h3 {
+    font-family: "Playfair Display", sans-serif;
+}
+input[type=text], input[type=password], input[type=search], textarea {
+    padding: .5rem;
+}
+table{
+    padding: 3px;
+    border-collapse: collapse;
+    background: #f0f8ffc4;
+}
+tr {
+    border-bottom: 1px solid lightgray;
+}
+th, td {
+    padding: 1rem;
+}
+button {
+    border: none;
+    background-color: #ff9800;
+    padding: .5rem;
+    border-radius: 4px;
+    color: white;
+    margin-inline: 10px;
+}
+button:hover {
+    background-color: #895302;
+}
+button:active {
+    border: black 2px solid;
+    background-color: #895302;
+}
+
+.cajita{
+    width: max-content;
+    background: #f0f8ffc4;
+    padding: 2rem;
+    border-radius: 6px;
+}
+.cajita>div {
+    margin: 1rem;
+    text-align: center;
+}
+
+.cajitacomentarios>div {
+    margin: 1rem;
+    text-align: center;
+}
+
+.cajitacomentarios>input{
+    margin-bottom: 1rem;
+}
+.cajitacomentarios{
+    width: min-content;
+    padding: 2rem;
+    background: #f0f8ffc4;
+    border-radius: 6px;
+}
+textarea{
+    resize: none;
+    width: 250px;
+    height: 50px;
+}
+
+[class="comentario"]:nth-child(2n-1) {
+    border-bottom: 1px solid lightgray;
+    border-left: .5rem #ff9800 solid;
+    padding-left: .5rem;
+  }
+
+[class="comentario"]:nth-child(2n) {
+    border-bottom: 1px solid lightgray;
+    border-left: .5rem lightgreen solid;
+    padding-left: .5rem;
+  }
+
+.comentario :is(h3, time){
+    display: inline-block;
+}
+
+[class="comentario"] time {
+    padding-left: 1rem;
+    color: gray;
+    font-size: smaller;
+  }
+
+  #lista_comentarios{
+    min-width: 50%;
+  }
