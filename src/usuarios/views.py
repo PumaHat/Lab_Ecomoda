@@ -10,10 +10,11 @@ def sesion_ver(request):
 
 def sesion_iniciar(request):
     try:
+        print(request.POST['usuario'], request.POST['contrasena'])
         usuario = authenticate(username=request.POST['usuario'], password=request.POST['contrasena'])
         if usuario:
             login(request, usuario)
-            return HttpResponse(status=201)
+            return JsonResponse({'usuario': usuario.username}, status=201)
         else:
             return HttpResponse(status=403)
     except:

@@ -16,6 +16,12 @@ h1 {
 body {
     font-family: "Noto Serif", serif;
 }
+body>article {
+    display: none;
+}
+body>article[aria-current="page"]{
+    display: block;
+}
 body>article>*{
     width: max-content;
     margin-inline: auto;
@@ -38,18 +44,22 @@ tr {
 th, td {
     padding: 1rem;
 }
-button {
+button, a.button {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: smaller;
     border: none;
     background-color: #ff9800;
     padding: .5rem;
     border-radius: 4px;
     color: white;
     margin-inline: 10px;
+    text-decoration: none;
 }
-button:hover {
+button:hover, a.button:hover {
     background-color: #895302;
 }
-button:active {
+button:active, a.button:active {
     border: black 2px solid;
     background-color: #895302;
 }
@@ -110,3 +120,10 @@ textarea{
   #lista_comentarios{
     min-width: 50%;
   }
+
+header>:is(#nombre_usuario, #subir, #cerrar_sesion){
+    display: none;
+}
+header.consesion>:is(#nombre_usuario, #subir, #cerrar_sesion){
+    display: inline-block;
+}

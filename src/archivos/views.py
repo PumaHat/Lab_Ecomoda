@@ -19,21 +19,22 @@ def archivo_listar(request):
         })
     return JsonResponse(obj, status=200, safe=False)
 
-def archivo_descargar(request, ida):
+def archivo_descargar(request, **kwargs):
     if not request.user:
         return HttpResponse(status=401)
     if not request.method == 'GET':
         return HttpResponse(status=405)
     try:
-        archivo = Archivo.objects.get(pk=ida)
+        archivo = Archivo.objects.get(pk=kwargs['int'])
     except Archivo.DoesNotExist:
         return HttpResponse(status=400)
     if not archivo.usuario_id == request.user.pk:
         return HttpResponse(status=403)
     try:
-        arch = open(os.path.join(settings.MEDIA_ROOT, str(pk)))
-        return HttpResponse(arch.read(), content_type='application/octet-stream')
-    except:
+        arch = open(os.path.join(settings.MEDIA_ROOT, str(kwargs['int'])), "rb")
+        return HttpResponse(arch.read(), status=200, content_type='application/octet-stream')
+    except Exception as e:
+        print(e)
         return HttpResponse(status=500)
 
 def archivo_subir(request):
@@ -45,10 +46,12 @@ def archivo_subir(request):
         nuevo = Archivo()
         nuevo.nombre = request.POST['nombre']
         nuevo.usuario = request.user
+        nuevo.save()
         data=request.FILES['archivo']
-        with open(os.path.join(settings.MEDIA_ROOT, pk)) as f:
+        with open(os.path.join(settings.MEDIA_ROOT, str(nuevo.pk)), "wb") as f:
             for chunk in data.chunks():
                 f.write(chunk)
+        return HttpResponse(status=200)
     except:
         return HttpResponse(status=500)
 
