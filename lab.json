@@ -1,0 +1,7 @@
+{
+  "nombre": "Ecomoda",
+  "descripcion": "Obtén el balance general real de Ecomoda, y salva a la empresa de la quiebra",
+  "temas": [
+    "csrf"
+  ]
+}

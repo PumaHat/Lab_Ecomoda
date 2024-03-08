@@ -1,5 +1,8 @@
 "use strict"
-window.dominio = "http://localhost:8000"
+
+let urldom = new URL(document.location);
+urldom.port = "8001";
+window.dominio = urldom.origin;
 
 function descargar(e){
     let ident = e.target.parentNode.parentNode.dataset.ident;
